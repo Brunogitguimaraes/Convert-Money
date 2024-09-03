@@ -5,21 +5,24 @@ const currencyConversionAudio = document.querySelector(
   ".currency-convert-audio"
 );
 
-function convertValues() {
+async function convertValues(){
   const inputCurrencyValue = document.querySelector(".input-currency").value;
   const currencyValueToConvert = document.querySelector(".currency-to-convert"); // valor em real
   const currencyValueConverted = document.querySelector(".currency-value-usa"); // Outras moedas
 
-  console.log(currencySelect.value);
+  const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL").then(resposta => resposta.json())
 
-  const dolarToday = 4.85;
-  const euroToday = 5.34;
+
+  const dolarToday = data.USDBRL.high;
+  const euroToday = data.EURBRL.high;
   const libraToday = 6.13;
-  const bitcoinToday = 208495.97;
+  const bitcoinToday = data.BTCBRL.high;
 
-  const dollarToEuro = 0.9;
+  const dollarToEuro = data.USDBRL.high;
   const dollarToLibra = 0.78;
-  const dollarToBitcoin = 0.000024;
+  const dollarToBitcoin = data.BTCBRL.high;
+
+  console.log(data);
 
   currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
     style: "currency",
