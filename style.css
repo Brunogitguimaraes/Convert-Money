@@ -27,10 +27,18 @@ body {
   display: block;
   background: transparent;
 }
-
+h1{
+  justify-content: center;
+  font-size: 25px;
+  display: flex;
+  color: #daa520;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+  
 main {
   width: 375px;
-  height: 712px;
+  height: 760px;
   background: #f4f4f4;
   margin: 0 auto 40px;
   border-radius: 20px;
